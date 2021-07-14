@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Jozef Csörgei</title>
+    <title>Fizz Buzz: A Coding Project By Jozef Csörgei</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,8 +22,8 @@
     <!-- ==== Nav Section ==== -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="img/logo_light.svg"
-                    class="d-inline-block align-text-top" width="24" height="24"> APP NAME</a>
+            <a class="navbar-brand" href="#"><img src="img/logo_light.svg" class="d-inline-block align-text-top"
+                    width="24" height="24"> Fizz Buzz</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -51,8 +51,56 @@
     </nav>
     <!-- ==== Main Section ==== -->
     <main class="flex-shrink-0">
-        <div class="container">
+        <div class="container mt-5">
+            <div class="row row-cols-1 row-cols-lg-2">
+                <div class="col col-lg-4 border-end border-2">
+                    <h1 class="display-6 lh-1 fw-bold mb-3">Fizz Buzz: A Coding Project</h1>
+                    <p class="lead pb-3">A javascript coding exercise using loops. Write a program that prints the
+                        numbers
+                        from 1 to 100 and for multiplies of '3' display <strong>"Fizz"</strong> instead of the number
+                        and for the multiplies of '5' display <strong>"Buzz"</strong>. If a multiple of both display
+                        <strong>"FizzBuzz".</strong>
+                    </p>
 
+                    <h2 class="lh-1 my-3">Instructions</h2>
+                    <p>
+                        Enter a fizz and a buzz value. Press the button and the values will appear.
+                    </p>
+
+                </div>
+                <div class="col col-lg-8">
+                    <form>
+                        <h5>Enter Values</h5>
+                        <div class="row row-cols-1 row-cols-lg-2">
+
+                            <div class="col mb-2">
+                                <input type="number" id="fizzValue" placeholder="Fizz" class="form-control">
+                            </div>
+                            <div class="col mb-2">
+                                <input type="number" id="buzzValue" placeholder="Buzz" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-flex justify-content-end">
+                                <button type="button" id="btnSubmit" class="btn btn-lg btn-warning">Buzz it</button>
+                            </div>
+                        </div>
+                    </form>
+                    <h2 class="border-2 border-bottom">Results</h2>
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <tbody id="results">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <!-- ==== Footer Section ==== -->
@@ -67,17 +115,32 @@
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
-                        <div class="col social"><a target="_blank" href="https://www.linkedin.com/in/jozef-cs%C3%B6rgei-659347217/"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <div class="col social"><a target="_blank"
+                                href="https://www.linkedin.com/in/jozef-cs%C3%B6rgei-659347217/"><i
+                                    class="fab fa-linkedin fa-2x"></i></a>
                         </div>
-                        <div class="col social"><a target="_blank" href="https://github.com/jcsorgei"><i class="fab fa-github fa-2x"></i></a>
+                        <div class="col social"><a target="_blank" href="https://github.com/jcsorgei"><i
+                                    class="fab fa-github fa-2x"></i></a>
                         </div>
-                        <div class="col social"><a target="_blank" href="https://twitter.com/JCsorgei"><i class="fab fa-twitter fa-2x"></i></a>
+                        <div class="col social"><a target="_blank" href="https://twitter.com/JCsorgei"><i
+                                    class="fab fa-twitter fa-2x"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+
+    <template id="fbTemplate">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
@@ -86,6 +149,9 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
     <script src="js/site.js"></script>
+    <script>
+        document.getElementById("btnSubmit").addEventListener("click", getValues)
+    </script>
 </body>
 
 </html>

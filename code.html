@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Jozef Csörgei</title>
+    <title>Fizz Buzz: A Coding Project By Jozef Csörgei</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,7 +24,7 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="img/logo_light.svg"
-                    class="d-inline-block align-text-top " width="24" height="24"> APP NAME</a>
+                    class="d-inline-block align-text-top " width="24" height="24"> Fizz Buzz</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -53,22 +53,106 @@
     <!-- ==== Main Section ==== -->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for APP NAME.</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for Fizz Buzz.</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //Call Hello World
-                            function HelloWorld(){
-                                alert("hello World");
+                            function getValues() {
+                                let fizzValue = document.getElementById("fizzValue").value;
+                                let buzzValue = document.getElementById("buzzValue").value;
+                            
+                                //Convert "fizzValue" and "buzzValue" to an integer using parseInt()
+                                fizzValue = parseInt(fizzValue);
+                                buzzValue = parseInt(buzzValue);
+                            
+                                //validate that "fizzValue" and "buzzValue" are actually Numbers.
+                                if (Number.isInteger(fizzValue) && Number.isInteger(buzzValue)) {
+                            
+                                    let fbData = FizzBuzz(fizzValue, buzzValue);
+                            
+                                    displayData(fbData);
+                            
+                                } else {
+                                    alert("You must enter Integers!")
+                                }
+                            
+                            }
+                            
+                            //Traditional Solve Fizz Buzz with a for loop
+                            function FizzBuzz(value1, value2) {
+                            
+                                let returnArray = [];
+                            
+                                for (let i = 1; i <= 100; i++) {
+                                    if (i % value1 == 0 && i % value2 == 0) {
+                                        returnArray.push("FizzBuzz");
+                                    } else if (i % value1 == 0) {
+                                        returnArray.push("Fizz")
+                            
+                                    } else if (i % value2 == 0) {
+                                        returnArray.push("Buzz")
+                            
+                                    } else {
+                                        returnArray.push(i);
+                            
+                                    }
+                                }
+                            
+                                return returnArray;
+                            
+                            }
+                            
+                            //custom display function
+                            function displayData(fbData) {
+                            
+                                //get the table body element from the page
+                                let tableBody = document.getElementById("results");
+                            
+                                //get the row from the template
+                                let templateRow = document.getElementById("fbTemplate");
+                            
+                                //clear table first
+                                tableBody.innerHTML = "";
+                            
+                                for (let i = 0; i < fbData.length; i += 5) {
+                                    const tableRow = document.importNode(templateRow.content, true);
+                                    //grab only the columns in the template
+                                    rowCols = tableRow.querySelectorAll("td");
+                            
+                                    rowCols[0].classList.add(fbData[i]);
+                                    rowCols[0].textContent = fbData[i];
+                            
+                                    rowCols[1].classList.add(fbData[i + 1]);
+                                    rowCols[1].textContent = fbData[i + 1];
+                            
+                                    rowCols[2].classList.add(fbData[i + 2]);
+                                    rowCols[2].textContent = fbData[i + 2];
+                            
+                                    rowCols[3].classList.add(fbData[i + 3]);
+                                    rowCols[3].textContent = fbData[i + 3];
+                            
+                                    rowCols[4].classList.add(fbData[i + 4]);
+                                    rowCols[4].textContent = fbData[i + 4];
+                            
+                                    tableBody.appendChild(tableRow);
+                                }
                             }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structed in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <p>The Code consists of 3 functions.</p>
+                    <h5>getValues</h5>
+                    <p>getValues is the entry point of the program. It takes the fizzValue and buzzValue from the form
+                        inputs and parses them to Integer. If the parsing was successful, it passes the values to
+                        <strong>FizzBuzz</strong> function. Otherwise it shows an alert message: "You must enter integers". </p>
+
+                    <h5>FizzBuzz</h5>
+                    <p>FizzBuzz takes a <strong>value1</strong> and an <strong>value2</strong> as parameters. It iterates over the array and if the current value is divisible by <strong>value1</strong> and <strong>value2</strong> it adds <strong>"FizzBuzz"</strong>to <strong>returnArray</strong>.<br> If the value is divisible by only <strong>value1</strong> it adds <strong>Fizz</strong> to <strong>returnArray</strong><br>If the value is divisible by only <strong>value2</strong> it adds <strong>Buzz</strong> to <strong>returnArray</strong><br>Otherwise the current iteration's value is added to <strong>returnArray</strong></p>
+                
+                    <h5>displayData</h5>
+                    <p>displayData takes an array as a parameter. It iterates over the array and creates a template row for table. Each row contains 5 values. To highlight Fizz and Buzz words a class is added to Fizz, Buzz values. Finally it appends the created template row to the table's innerHTML.</p>
                 </div>
             </div>
         </div>
